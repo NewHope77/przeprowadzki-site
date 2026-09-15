@@ -259,6 +259,46 @@ CASES = [
 # Prawdziwe opinie klientów: D(name="Anna K.", text="...", source="Google")
 REVIEWS = []
 
+# Zdjęcia z realizacji klienta — pliki assets/img/r/<n>.jpg i <n>-t.jpg (miniatura 640×480)
+CATS = [("meble", "Meble i kino domowe"), ("lozka", "Łóżka i montaż"), ("przeprowadzki", "Przeprowadzki i załadunek"),
+        ("biura", "Biura i magazyny"), ("nietypowe", "Transport nietypowy")]
+GALLERY = [D(n=n, cat=c, alt=a) for n, c, a in [
+    ("04", "meble", "Fotele kinowe z podświetleniem LED w sali"),
+    ("15", "meble", "Duży narożnik po wniesieniu i ustawieniu"),
+    ("26", "lozka", "Łóżko tapicerowane po montażu"),
+    ("18", "przeprowadzki", "Załadunek auta — kartony, rower, sprzęt AGD"),
+    ("45", "przeprowadzki", "Meble zabezpieczone folią w aucie"),
+    ("38", "biura", "Kartony i meble biurowe w magazynie"),
+    ("09", "meble", "Sofa kinowa w jasnej tapicerce"),
+    ("35", "nietypowe", "Transport drzewa oliwnego na wózku paletowym"),
+    ("05", "meble", "Rzędy foteli kinowych w domowym kinie"),
+    ("33", "lozka", "Montaż łóżka ze stelażem"),
+    ("47", "przeprowadzki", "Zapakowane rzeczy gotowe do transportu"),
+    ("41", "biura", "Przeprowadzka biura — meble i szafy"),
+    ("07", "meble", "Kino domowe — fotele po ustawieniu"),
+    ("36", "lozka", "Łóżko z pojemnikiem — montaż"),
+    ("30", "przeprowadzki", "Transport rzeczy i roślin"),
+    ("44", "biura", "Wyposażenie biura w hali"),
+    ("16", "meble", "Fotele kinowe ustawione w półokręgu"),
+    ("24", "lozka", "Montaż łóżek z pojemnikami"),
+    ("29", "przeprowadzki", "Meble przygotowane do załadunku"),
+    ("46", "biura", "Rzeczy w magazynie po rozładunku"),
+    ("37", "meble", "Fotele z podświetleniem po ustawieniu"),
+    ("10", "przeprowadzki", "Meble zabezpieczone folią i kartony"),
+    ("40", "meble", "Sala kinowa — fotele po wniesieniu"),
+    ("20", "przeprowadzki", "Szafy owinięte folią stretch"),
+    ("06", "meble", "Sofa z funkcją relaks po wniesieniu"),
+    ("25", "przeprowadzki", "Ubrania przygotowane do przeprowadzki"),
+]]
+HOME_PHOTOS = ["04", "15", "26", "18", "45", "38", "09", "35"]
+SERVICE_PHOTOS = {
+    "przeprowadzki-prywatne": ["18", "26", "10", "25"],
+    "przeprowadzki-biur": ["38", "41", "44", "46"],
+    "przeprowadzki-miedzymiastowe": ["45", "47", "30", "29"],
+    "taxi-bagazowe": ["18", "35", "20", "30"],
+    "transport-mebli": ["15", "09", "33", "05"],
+}
+
 ARTICLES = [
     D(slug="jak-zorganizowac-przeprowadzke", icon="list", cat="Planowanie", read="6 min",
       title="Przeprowadzka krok po kroku — jak ją zorganizować?",

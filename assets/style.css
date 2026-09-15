@@ -382,6 +382,36 @@ footer .logo{color:#fff;margin-bottom:16px}
 @media (max-width:380px){ .nav-right .btn{display:none} }
 @media (max-width:340px){ .choices,.choices.c2{grid-template-columns:1fr} }
 
+[hidden]{display:none!important}
+
+/* gallery + lightbox */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;grid-auto-flow:dense}
+.ph{position:relative;display:block;border-radius:16px;overflow:hidden;aspect-ratio:4/3;background:var(--line)}
+.ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.ph:hover img{transform:scale(1.05)}
+.ph span{position:absolute;left:0;right:0;bottom:0;padding:28px 14px 12px;color:#fff;font-size:13px;font-weight:600;line-height:1.35;background:linear-gradient(transparent,rgba(14,27,44,.85));opacity:0;transform:translateY(6px);transition:opacity .2s,transform .2s}
+.ph:hover span,.ph:focus-visible span{opacity:1;transform:none}
+.gallery.big .ph:nth-child(7n+1){grid-column:span 2;grid-row:span 2}
+.gf{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.gf button{font:700 14px var(--f-body);background:var(--bg);border:1px solid var(--line);padding:10px 16px;border-radius:999px;cursor:pointer;color:var(--ink)}
+.gf button:hover{border-color:var(--accent)}
+.gf button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.lb{position:fixed;inset:0;z-index:100;background:rgba(8,14,24,.94);display:flex;align-items:center;justify-content:center;padding:24px}
+.lb figure{margin:0;max-width:min(1100px,100%);text-align:center}
+.lb img{max-width:100%;max-height:80vh;border-radius:12px;display:block;margin:0 auto}
+.lb figcaption{color:#DDE3EA;margin-top:12px;font-weight:600}
+.lb button{position:absolute;background:rgba(255,255,255,.14);color:#fff;border:0;width:52px;height:52px;border-radius:50%;font-size:30px;line-height:1;cursor:pointer}
+.lb button:hover{background:var(--accent)}
+.lb-x{top:18px;right:18px}
+.lb-p{left:18px;top:50%;transform:translateY(-50%)}
+.lb-n{right:18px;top:50%;transform:translateY(-50%)}
+@media (max-width:1024px){ .gallery{grid-template-columns:repeat(3,1fr)} }
+@media (max-width:640px){
+  .gallery{grid-template-columns:1fr 1fr;gap:10px}
+  .ph span{opacity:1;transform:none;font-size:12px;padding:20px 10px 8px}
+  .lb-p,.lb-n{top:auto;bottom:18px;transform:none}
+}
+
 /* hero illustrations + quick form band */
 .hero.has-art{padding-bottom:72px}
 .hero.has-art .hero-grid{grid-template-columns:1.05fr .95fr}

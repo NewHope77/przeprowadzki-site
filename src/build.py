@@ -6,7 +6,7 @@ import json
 from datetime import date
 from pathlib import Path
 
-from content import SITE, SERVICES, HOURLY, BOX_NOTES, HOME_FAQ, CASES, REVIEWS, ARTICLES
+from content import SITE, SERVICES, HOURLY, BOX_NOTES, HOME_FAQ, REVIEWS, ARTICLES, CATS, GALLERY, HOME_PHOTOS, SERVICE_PHOTOS
 from illustrations import ART
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -368,6 +368,23 @@ def case_cards(R, items):
     return '<div class="cases">' + "".join(out) + '</div>'
 
 
+def photo(R, g):
+    return (f'<a class="ph" href="{R}assets/img/r/{g.n}.jpg" data-cat="{g.cat}" data-lb>'
+            f'<img src="{R}assets/img/r/{g.n}-t.jpg" alt="{esc(g.alt)}" loading="lazy"><span>{g.alt}</span></a>')
+
+
+def photos(R, numbers=None, cls="gallery"):
+    items = [g for n in numbers for g in GALLERY if g.n == n] if numbers else GALLERY
+    return f'<div class="{cls}">' + "".join(photo(R, g) for g in items) + '</div>'
+
+
+def service_gallery(R, s):
+    if not SERVICE_PHOTOS.get(s.slug):
+        return ""
+    return (f'<section><div class="wrap">{sec_head("Realizacje", "Z naszych zleceń", "Zdjęcia z prawdziwych realizacji naszej ekipy.")}'
+            f'{photos(R, SERVICE_PHOTOS[s.slug])}<p class="center-link"><a href="{R}realizacje/" class="more">Wszystkie zdjęcia →</a></p></div></section>')
+
+
 def post_cards(R, items):
     return '<div class="posts">' + "".join(f'''
 <a class="post" href="{R}porady/{a.slug}/">
@@ -516,7 +533,7 @@ def home(R):
 </section>'''
             + f'<section><div class="wrap">{sec_head("Dlaczego my", "Gwarancje, które daje niewiele firm")}{guarantees()}</div></section>'
             + steps_section()
-            + f'<section><div class="wrap">{sec_head("Realizacje", "Tak wygląda nasza praca", "Mieszkania, domy, biura i transport specjalny — w Warszawie i całej Polsce.")}{case_cards(R, CASES[:3])}<p class="center-link"><a href="{R}realizacje/" class="more">Wszystkie realizacje →</a></p></div></section>'
+            + f'<section><div class="wrap">{sec_head("Realizacje", "Tak wygląda nasza praca", "Mieszkania, domy, biura i transport specjalny — w Warszawie i całej Polsce.")}{photos(R, HOME_PHOTOS)}<p class="center-link"><a href="{R}realizacje/" class="more">Wszystkie realizacje →</a></p></div></section>'
             + order_section(R)
             + f'<section class="alt"><div class="wrap">{sec_head("Porady", "Poradnik przeprowadzkowy", "Praktyczne wskazówki: jak pakować, jak przewieźć AGD i jak zaplanować przeprowadzkę.")}{post_cards(R, ARTICLES[:3])}<p class="center-link"><a href="{R}porady/" class="more">Wszystkie porady →</a></p></div></section>'
             + faq_section(HOME_FAQ, alt=False)
@@ -540,6 +557,7 @@ def service_page(s):
     <div class="price-extra single">{notes_box(s.notes)}</div>
   </div>
 </section>'''
+        out += service_gallery(R, s)
         out += steps_section(with_process=False)
         if s.fleet:
             out += fleet()
@@ -575,7 +593,9 @@ def cennik_page():
 def realizacje_page():
     def body(R):
         out = phead(R, "Nasze <em>realizacje</em>", "Przeprowadzki mieszkań, domów i biur, transport międzymiastowy i specjalny. Zobacz, jak wygląda nasza praca.", [("Realizacje", "")])
-        out += f'<section class="alt"><div class="wrap">{case_cards(R, CASES)}</div></section>'
+        filters = '<div class="gf"><button type="button" class="on" data-f="all">Wszystkie</button>' + "".join(
+            f'<button type="button" data-f="{k}">{t}</button>' for k, t in CATS) + '</div>'
+        out += f'<section class="alt"><div class="wrap">{filters}{photos(R, cls="gallery big")}</div></section>'
         out += f'<section><div class="wrap">{sec_head("Dlaczego my", "Każde zlecenie z tymi samymi gwarancjami")}{guarantees()}</div></section>'
         return out + cta_band(R, "Chcesz taką przeprowadzkę? Wycenimy ją za darmo.")
     page("realizacje/", "Realizacje — przeprowadzki i transport", "Przykłady naszych realizacji: przeprowadzki mieszkań, domów i biur, transport międzymiastowy, transport pianin.", body, active="realizacje")

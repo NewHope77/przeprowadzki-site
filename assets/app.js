@@ -64,6 +64,50 @@
       (SITE.formEndpoint ? "" : `<a class="btn btn-accent" target="_blank" rel="noopener" href="${waUrl(msg)}">Potwierdź na WhatsApp</a>`);
   }));
 
+  // gallery filters
+  $$(".gf button").forEach(b => b.addEventListener("click", () => {
+    $$(".gf button").forEach(x => x.classList.toggle("on", x === b));
+    $$(".gallery .ph").forEach(p => p.hidden = b.dataset.f !== "all" && p.dataset.cat !== b.dataset.f);
+  }));
+
+  // lightbox
+  if ($("[data-lb]")) {
+    const shots = () => $$("[data-lb]").filter(a => !a.hidden);
+    const lb = document.createElement("div");
+    lb.className = "lb";
+    lb.hidden = true;
+    lb.innerHTML = '<button class="lb-x" type="button" aria-label="Zamknij">×</button><button class="lb-p" type="button" aria-label="Poprzednie">‹</button><figure><img alt=""><figcaption></figcaption></figure><button class="lb-n" type="button" aria-label="Następne">›</button>';
+    document.body.append(lb);
+    let idx = 0;
+    const open = i => {
+      const s = shots();
+      idx = (i + s.length) % s.length;
+      const a = s[idx], alt = $("img", a).alt;
+      $("img", lb).src = a.href;
+      $("img", lb).alt = alt;
+      $("figcaption", lb).textContent = alt;
+      lb.hidden = false;
+      document.body.style.overflow = "hidden";
+    };
+    const close = () => { lb.hidden = true; document.body.style.overflow = ""; };
+    document.addEventListener("click", e => {
+      const a = e.target.closest("[data-lb]");
+      if (!a) return;
+      e.preventDefault();
+      open(shots().indexOf(a));
+    });
+    $(".lb-x", lb).onclick = close;
+    $(".lb-p", lb).onclick = () => open(idx - 1);
+    $(".lb-n", lb).onclick = () => open(idx + 1);
+    lb.addEventListener("click", e => { if (e.target === lb) close(); });
+    document.addEventListener("keydown", e => {
+      if (lb.hidden) return;
+      if (e.key === "Escape") close();
+      if (e.key === "ArrowLeft") open(idx - 1);
+      if (e.key === "ArrowRight") open(idx + 1);
+    });
+  }
+
   // order form
   const form = $("#orderForm");
   if (!form) return;
