@@ -1,0 +1,703 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MOVEO — Przeprowadzki i transport w Warszawie</title>
+<meta name="description" content="Przeprowadzki prywatne i firmowe, transport mebli, pianin, taxi bagażowe. Stała cena, ubezpieczenie OCP do 200 000 zł, zamówienie online w 2 minuty.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E1B2C; --ink-2:#253448; --muted:#5F6B7A; --line:#E4E7EC;
+  --bg:#F6F4EF; --card:#FFFFFF; --accent:#FF6A1A; --accent-2:#FFB400; --accent-ink:#fff;
+  --deep:#0E1B2C; --deep-2:#16283F; --ok:#16A36A;
+  --r:20px; --r-sm:12px; --shadow:0 10px 30px rgba(14,27,44,.08);
+  --f-head:"Unbounded", "Arial Black", system-ui, sans-serif;
+  --f-body:"Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--f-body);color:var(--ink);background:var(--bg);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--f-head);line-height:1.15;margin:0;letter-spacing:-.01em}
+h2{font-size:clamp(28px,4vw,44px)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.eyebrow::before{content:"";width:22px;height:2px;background:currentColor}
+.lead{color:var(--muted);font-size:18px;max-width:620px}
+section{padding-block:96px}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:48px}
+.sec-head h2{margin-top:12px;max-width:700px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;cursor:pointer;font:700 16px var(--f-body);padding:16px 26px;border-radius:999px;transition:transform .15s, box-shadow .15s, background .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn-accent{background:var(--accent);color:var(--accent-ink);box-shadow:0 10px 24px rgba(255,106,26,.35)}
+.btn-accent:hover{background:#ff5a00}
+.btn-ghost{background:transparent;color:inherit;box-shadow:inset 0 0 0 2px currentColor}
+.btn-dark{background:var(--ink);color:#fff}
+.btn svg{width:20px;height:20px;flex:none}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:rgba(246,244,239,.85);backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .2s}
+header.scrolled{border-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px;gap:20px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--f-head);font-weight:800;font-size:22px}
+.logo-mark{width:38px;height:38px;border-radius:11px;background:var(--accent);display:grid;place-items:center;color:#fff}
+.logo-mark svg{width:22px;height:22px}
+.menu{display:flex;gap:30px;font-weight:600;font-size:15px}
+.menu a{opacity:.8}.menu a:hover{opacity:1;color:var(--accent)}
+.nav-right{display:flex;align-items:center;gap:16px}
+.phone{font-weight:800;display:flex;flex-direction:column;line-height:1.2;text-align:right}
+.phone small{font-weight:500;color:var(--muted);font-size:12px}
+.burger{display:none;background:none;border:0;padding:8px;cursor:pointer}
+.burger span{display:block;width:24px;height:2px;background:var(--ink);margin:5px 0}
+
+/* hero */
+.hero{padding-block:48px 96px;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(34px,5.4vw,66px);margin:18px 0 22px}
+.hero h1 em{font-style:normal;color:var(--accent);position:relative;white-space:nowrap}
+.hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.18em;background:var(--accent-2);opacity:.35;z-index:-1;border-radius:4px}
+.badges{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0 34px}
+.badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);padding:9px 14px;border-radius:999px;font-weight:600;font-size:14px}
+.badge i{width:20px;height:20px;border-radius:50%;background:rgba(22,163,106,.12);color:var(--ok);display:grid;place-items:center;font-style:normal;font-size:12px;font-weight:800}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+.rating{display:flex;align-items:center;gap:14px;margin-top:34px;color:var(--muted);font-size:14px}
+.stars{color:var(--accent-2);letter-spacing:2px;font-size:18px}
+.rating b{color:var(--ink)}
+
+.quick{background:var(--deep);color:#fff;border-radius:28px;padding:32px;box-shadow:0 30px 60px rgba(14,27,44,.25);position:relative}
+.quick::before{content:"";position:absolute;inset:-14px -14px auto auto;width:120px;height:120px;border-radius:50%;background:var(--accent-2);z-index:-1;filter:blur(2px)}
+.quick h3{font-size:22px;margin-bottom:6px}
+.quick p{color:#A9B4C2;margin:0 0 22px;font-size:15px}
+.quick .field label{color:#C9D2DC}
+.quick input,.quick select{background:var(--deep-2);border-color:#2A3D55;color:#fff}
+.quick input::placeholder{color:#7C8A9C}
+.quick .btn{width:100%;margin-top:6px}
+.quick .note{font-size:13px;color:#8C99AA;text-align:center;margin-top:14px}
+.hero-blob{position:absolute;right:-180px;top:-120px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(255,180,0,.25),rgba(255,106,26,.08) 60%,transparent 70%);z-index:-1}
+
+/* forms */
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.field label{font-size:13px;font-weight:700;color:var(--ink-2)}
+input,select,textarea{font:500 15px var(--f-body);padding:14px 16px;border-radius:var(--r-sm);border:1.5px solid var(--line);background:#fff;color:var(--ink);width:100%;outline:none;transition:border-color .15s, box-shadow .15s}
+input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(255,106,26,.15)}
+textarea{min-height:110px;resize:vertical}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.row3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+
+/* stats */
+.stats{background:var(--deep);color:#fff;padding-block:44px}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stat b{display:block;font-family:var(--f-head);font-size:clamp(28px,3.4vw,40px);color:var(--accent-2)}
+.stat span{color:#A9B4C2;font-size:15px}
+
+/* services */
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc{background:var(--card);border-radius:var(--r);padding:30px;border:1px solid var(--line);transition:transform .2s, box-shadow .2s;display:flex;flex-direction:column}
+.svc:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.svc-ic{width:56px;height:56px;border-radius:16px;background:#FFF1E8;color:var(--accent);display:grid;place-items:center;margin-bottom:22px}
+.svc-ic svg{width:28px;height:28px}
+.svc h3{font-size:19px;margin-bottom:10px}
+.svc p{color:var(--muted);margin:0 0 18px;font-size:15px;flex:1}
+.svc .more{font-weight:700;color:var(--accent);font-size:15px}
+
+/* pricing */
+#cennik{background:#fff}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+.plan{border:1.5px solid var(--line);border-radius:24px;padding:34px 30px;display:flex;flex-direction:column;background:#fff;position:relative}
+.plan.hot{background:var(--deep);color:#fff;border-color:var(--deep);transform:scale(1.03);box-shadow:0 30px 60px rgba(14,27,44,.2)}
+.plan .tag{position:absolute;top:-14px;left:30px;background:var(--accent);color:#fff;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+.plan h3{font-size:22px}
+.plan .sub{color:var(--muted);font-size:14px;margin:6px 0 22px}
+.plan.hot .sub{color:#A9B4C2}
+.price{display:flex;align-items:baseline;gap:8px;margin-bottom:6px}
+.price b{font-family:var(--f-head);font-size:54px;line-height:1}
+.price span{color:var(--muted);font-weight:600}
+.plan.hot .price span{color:#A9B4C2}
+.team{font-size:14px;font-weight:700;color:var(--accent);margin-bottom:22px}
+.plan ul{list-style:none;padding:0;margin:0 0 28px;display:grid;gap:11px;flex:1}
+.plan li{display:flex;gap:10px;font-size:15px}
+.plan li::before{content:"";flex:none;width:20px;height:20px;margin-top:2px;border-radius:50%;background:rgba(22,163,106,.14) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2316A36A' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/12px no-repeat}
+.plan li.no{color:#9AA4B1}
+.plan li.no::before{background:#F0F2F5 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239AA4B1' stroke-width='3.5' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6L6 18'/%3E%3C/svg%3E") center/10px no-repeat}
+.plan.hot li.no{color:#6B7B8F}
+.plan.hot li.no::before{background-color:#223650}
+.plan .btn{width:100%}
+
+.price-extra{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;margin-top:40px}
+.box{background:var(--bg);border-radius:24px;padding:30px}
+.box h3{font-size:18px;margin-bottom:16px}
+.box ul{margin:0;padding-left:18px;color:var(--ink-2);display:grid;gap:8px;font-size:15px}
+.calc .out{display:flex;justify-content:space-between;align-items:center;background:var(--deep);color:#fff;border-radius:16px;padding:18px 22px;margin-top:6px}
+.calc .out b{font-family:var(--f-head);font-size:30px;color:var(--accent-2)}
+.calc .out small{color:#A9B4C2;display:block;font-size:13px}
+input[type=range]{padding:0;border:0;accent-color:var(--accent);height:28px;box-shadow:none}
+.range-val{font-weight:800}
+
+/* guarantees */
+.guar{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.g{padding:28px;border-radius:var(--r);background:#fff;border:1px solid var(--line)}
+.g .num{font-family:var(--f-head);font-size:14px;color:var(--accent);margin-bottom:18px;display:block}
+.g h3{font-size:18px;margin-bottom:8px}
+.g p{margin:0;color:var(--muted);font-size:15px}
+
+/* steps */
+#jak{background:var(--deep);color:#fff}
+#jak .lead{color:#A9B4C2}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
+.step{position:relative;padding:30px 26px;border-radius:var(--r);background:var(--deep-2);border:1px solid #223650}
+.step::before{counter-increment:s;content:"0" counter(s);font-family:var(--f-head);font-size:40px;color:var(--accent);display:block;margin-bottom:20px}
+.step h3{font-size:19px;margin-bottom:8px}
+.step p{margin:0;color:#A9B4C2;font-size:15px}
+.process{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#223650;border-radius:var(--r);overflow:hidden;margin-top:64px}
+.pr{background:var(--deep);padding:28px}
+.pr h3{font-size:16px;margin-bottom:8px;color:var(--accent-2)}
+.pr p{margin:0;color:#A9B4C2;font-size:15px}
+
+/* order */
+.order-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:start}
+.order-aside .lead{margin:18px 0 30px}
+.contact-list{display:grid;gap:12px}
+.cl{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px;font-weight:700;transition:border-color .15s}
+.cl:hover{border-color:var(--accent)}
+.cl .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;color:#fff;flex:none}
+.cl .ic svg{width:22px;height:22px}
+.cl small{display:block;color:var(--muted);font-weight:500;font-size:13px}
+.form-card{background:#fff;border-radius:28px;padding:36px;box-shadow:var(--shadow);border:1px solid var(--line)}
+.stepper{display:flex;gap:8px;margin-bottom:28px}
+.stepper div{flex:1;height:5px;border-radius:5px;background:var(--line);transition:background .3s}
+.stepper div.on{background:var(--accent)}
+.fstep{display:none}
+.fstep.on{display:block;animation:fade .3s}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.fstep h3{font-size:20px;margin-bottom:6px}
+.fstep .hint{color:var(--muted);font-size:14px;margin:0 0 22px}
+.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.choice{position:relative}
+.choice input{position:absolute;inset:0;opacity:0;pointer-events:none}
+.choice span{display:flex;flex-direction:column;gap:4px;border:1.5px solid var(--line);border-radius:14px;padding:14px;cursor:pointer;font-weight:700;font-size:15px;height:100%;transition:all .15s}
+.choice small{font-weight:500;color:var(--muted);font-size:13px}
+.choice input:checked + span{border-color:var(--accent);background:#FFF5EE;box-shadow:0 0 0 3px rgba(255,106,26,.15)}
+.choice input:focus-visible + span{outline:2px solid var(--accent)}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.check{display:flex;gap:10px;align-items:center;font-size:15px;font-weight:600;cursor:pointer;padding:10px 12px;border-radius:10px;background:var(--bg)}
+.check input{width:18px;height:18px;accent-color:var(--accent);padding:0}
+.fnav{display:flex;justify-content:space-between;gap:12px;margin-top:22px}
+.fnav .btn-ghost{color:var(--ink-2)}
+.err{color:#D4380D;font-size:14px;font-weight:600;margin-top:8px;min-height:20px}
+.success{text-align:center;padding:30px 0}
+.success .big{width:80px;height:80px;border-radius:50%;background:rgba(22,163,106,.12);color:var(--ok);display:grid;place-items:center;margin:0 auto 20px}
+.success .big svg{width:40px;height:40px}
+.summary{background:var(--bg);border-radius:14px;padding:16px 18px;font-size:14px;text-align:left;margin:20px 0;white-space:pre-line}
+
+/* faq */
+#faq{background:#fff}
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px}
+details{border-bottom:1px solid var(--line);padding:22px 0}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-weight:700;font-size:17px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--f-head);color:var(--accent);font-size:24px;line-height:1;transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--muted);margin:14px 0 0}
+
+/* cta band + footer */
+.band{background:var(--accent);color:#fff;border-radius:32px;padding:56px;display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;position:relative;overflow:hidden}
+.band h2{max-width:620px}
+.band::after{content:"";position:absolute;right:-60px;bottom:-120px;width:320px;height:320px;border-radius:50%;background:var(--accent-2);opacity:.5}
+.band > *{position:relative;z-index:1}
+.band .btn-dark:hover{background:#000}
+footer{background:var(--deep);color:#A9B4C2;padding-block:64px 32px;margin-top:96px}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+footer h4{color:#fff;margin:0 0 16px;font-size:15px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:15px}
+footer a:hover{color:#fff}
+footer .logo{color:#fff;margin-bottom:16px}
+.copy{border-top:1px solid #223650;margin-top:48px;padding-top:24px;font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+/* floating */
+.fab{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;flex-direction:column;gap:10px}
+.fab a{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;color:#fff;box-shadow:0 10px 24px rgba(0,0,0,.2)}
+.fab a svg{width:28px;height:28px}
+.wa{background:#25D366}.tel{background:var(--accent)}
+.mobile-menu{display:none}
+
+@media (max-width:1024px){
+  .hero-grid,.order-grid,.faq-grid,.price-extra{grid-template-columns:1fr}
+  .services{grid-template-columns:1fr 1fr}
+  .plans{grid-template-columns:1fr;max-width:520px;margin:0 auto}
+  .plan.hot{transform:none}
+  .guar,.steps,.stats-grid{grid-template-columns:1fr 1fr}
+  .process{grid-template-columns:1fr 1fr}
+  .foot{grid-template-columns:1fr 1fr}
+  .menu{display:none}
+  .burger{display:block}
+  .mobile-menu{position:fixed;inset:76px 0 auto 0;background:var(--bg);padding:20px;border-bottom:1px solid var(--line);flex-direction:column;gap:6px;z-index:49}
+  .mobile-menu.open{display:flex}
+  .mobile-menu a{padding:12px 4px;font-weight:700;font-size:18px;border-bottom:1px solid var(--line)}
+}
+@media (max-width:640px){
+  section{padding-block:64px}
+  .phone{display:none}
+  .nav-right .btn{padding:12px 18px;font-size:14px}
+  .services,.guar,.steps,.process,.foot,.row2,.row3,.checks{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .choices{grid-template-columns:1fr}
+  .quick,.form-card{padding:24px}
+  .band{padding:36px 26px}
+  .hero-cta .btn{flex:1}
+}
+</style>
+</head>
+<body>
+
+<!-- ======= KONFIGURACJA: zmień nazwę, telefon, e-mail w jednym miejscu (skrypt na dole) ======= -->
+
+<header id="top">
+  <div class="wrap nav">
+    <a href="#top" class="logo">
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg></span>
+      <span data-brand>MOVEO</span>
+    </a>
+    <nav class="menu">
+      <a href="#uslugi">Usługi</a>
+      <a href="#cennik">Cennik</a>
+      <a href="#jak">Jak działamy</a>
+      <a href="#faq">FAQ</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <div class="nav-right">
+      <a class="phone" data-tel-link href="#"><span data-tel>+48 000 000 000</span><small>Pon–Sob, 8:00–19:00</small></a>
+      <a href="#zamow" class="btn btn-accent">Zamów online</a>
+      <button class="burger" aria-label="Menu" onclick="document.querySelector('.mobile-menu').classList.toggle('open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" onclick="this.classList.remove('open')">
+  <a href="#uslugi">Usługi</a><a href="#cennik">Cennik</a><a href="#jak">Jak działamy</a><a href="#zamow">Zamów online</a><a href="#faq">FAQ</a><a href="#kontakt">Kontakt</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-blob"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Przeprowadzki · Warszawa i okolice</span>
+      <h1>Przeprowadzka <em>bez stresu</em> i bez ukrytych kosztów</h1>
+      <p class="lead">Pakujemy, demontujemy, przewozimy i ustawiamy. Cenę ustalamy przed startem — i ona się nie zmienia. Zamów online w 2 minuty.</p>
+      <div class="badges">
+        <span class="badge"><i>✓</i>Stała cena</span>
+        <span class="badge"><i>✓</i>OCP do 200 000 zł</span>
+        <span class="badge"><i>✓</i>Płatność po realizacji</span>
+        <span class="badge"><i>✓</i>Kompleksowo od A do Z</span>
+      </div>
+      <div class="hero-cta">
+        <a href="#zamow" class="btn btn-accent">Zamów przeprowadzkę
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#cennik" class="btn btn-ghost">Zobacz cennik</a>
+      </div>
+      <div class="rating">
+        <span class="stars">★★★★★</span>
+        <span><b>5.0</b> — średnia ocen naszych klientów</span>
+      </div>
+    </div>
+
+    <form class="quick" id="quickForm">
+      <h3>Darmowa wycena</h3>
+      <p>Zostaw numer — oddzwonimy w ciągu kilku minut.</p>
+      <div class="field"><label for="q-name">Imię</label><input id="q-name" name="name" placeholder="Jan" autocomplete="given-name"></div>
+      <div class="field"><label for="q-phone">Telefon *</label><input id="q-phone" name="phone" type="tel" placeholder="+48 ___ ___ ___" required autocomplete="tel"></div>
+      <div class="field"><label for="q-svc">Czego potrzebujesz?</label>
+        <select id="q-svc" name="service">
+          <option>Przeprowadzka mieszkania</option><option>Przeprowadzka biura</option><option>Przeprowadzka międzymiastowa</option>
+          <option>Transport mebli</option><option>Transport pianina</option><option>Taxi bagażowe</option><option>Opróżnianie mieszkania</option>
+        </select></div>
+      <button class="btn btn-accent" type="submit">Oddzwońcie do mnie</button>
+      <div class="note">Bez zobowiązań · Wycena bezpłatna</div>
+    </form>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="wrap stats-grid">
+    <div class="stat"><b data-count="3400">0</b><span>wykonanych przeprowadzek</span></div>
+    <div class="stat"><b>200 000 zł</b><span>ubezpieczenia OCP</span></div>
+    <div class="stat"><b>0 zł</b><span>zaliczki — płacisz po realizacji</span></div>
+    <div class="stat"><b>6 dni</b><span>w tygodniu, 8:00–19:00</span></div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="uslugi">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Czym się zajmujemy</span><h2>Wszystko, czego potrzebujesz przy przeprowadzce</h2></div>
+      <p class="lead">Od jednej sofy po całe biuro. Własne auta, sprzęt i materiały do zabezpieczenia.</p>
+    </div>
+    <div class="services">
+      <article class="svc"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></div>
+        <h3>Przeprowadzki prywatne</h3><p>Mieszkania i domy — pakowanie, demontaż, transport i ustawienie mebli w nowym miejscu.</p><a class="more" href="#zamow" data-svc="Przeprowadzka mieszkania">Zamów →</a></article>
+      <article class="svc"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1"/></svg></div>
+        <h3>Przeprowadzki biur</h3><p>Dokumenty, szafy, biurka, sprzęt IT. Sprawnie, także w weekend — bez przestojów w pracy.</p><a class="more" href="#zamow" data-svc="Przeprowadzka biura">Zamów →</a></article>
+      <article class="svc"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="18" r="2"/><circle cx="18" cy="6" r="2"/><path d="M8 18h7a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h7"/></svg></div>
+        <h3>Przeprowadzki międzymiastowe</h3><p>Z Warszawy w całą Polskę i z powrotem. Jeden termin, jedna ekipa, stała cena.</p><a class="more" href="#zamow" data-svc="Przeprowadzka międzymiastowa">Zamów →</a></article>
+      <article class="svc"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3"/><path d="M2 13a2 2 0 0 1 4 0v2h12v-2a2 2 0 0 1 4 0v5H2z"/><path d="M5 18v2M19 18v2"/></svg></div>
+        <h3>Transport mebli</h3><p>Sofa ze sklepu, szafa od znajomych? Wniesiemy, zabezpieczymy folią i przywieziemy tego samego dnia.</p><a class="more" href="#zamow" data-svc="Transport mebli">Zamów →</a></article>
+      <article class="svc"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 13h18M8 13v7M12 13v7M16 13v7"/></svg></div>
+        <h3>Transport pianin</h3><p>Pianina i ciężkie przedmioty — pasy, wózki i doświadczona ekipa, także bez windy.</p><a class="more" href="#zamow" data-svc="Transport pianina">Zamów →</a></article>
+      <article class="svc"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8M12 13v8"/></svg></div>
+        <h3>Taxi bagażowe i opróżnianie</h3><p>Szybki przewóz kilku rzeczy lub opróżnienie mieszkania, piwnicy czy garażu.</p><a class="more" href="#zamow" data-svc="Taxi bagażowe">Zamów →</a></article>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="cennik">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Cennik</span><h2>Przejrzyste stawki. Płacisz tyle, ile ustalimy.</h2></div>
+      <p class="lead">Rozliczenie godzinowe — idealne do mniejszych zleceń. Przy większych przeprowadzkach podajemy stałą cenę za całość.</p>
+    </div>
+
+    <div class="plans">
+      <div class="plan">
+        <h3>Ekonomiczny</h3><div class="sub">Auto + 1 tragarz</div>
+        <div class="price"><b>189</b><span>zł / godz.</span></div>
+        <div class="team">Ekipa 1-osobowa</div>
+        <ul><li>Transport</li><li>Wyniesienie i wniesienie</li><li>Bez ukrytych kosztów</li><li class="no">Zabezpieczenie folią</li><li class="no">Pakowanie i montaż</li></ul>
+        <a href="#zamow" class="btn btn-ghost" data-plan="Ekonomiczny">Wybieram</a>
+      </div>
+      <div class="plan hot">
+        <span class="tag">Najczęściej wybierany</span>
+        <h3>Kompleksowy</h3><div class="sub">Streczowanie · Pakowanie · Montaż</div>
+        <div class="price"><b>239</b><span>zł / godz.</span></div>
+        <div class="team">Ekipa 2-osobowa</div>
+        <ul><li>Transport, wyniesienie i wniesienie</li><li>Zabezpieczenie mebli folią</li><li>Zabezpieczenie delikatnych przedmiotów</li><li>Pakowanie rzeczy i odzieży</li><li>Demontaż i montaż mebli</li><li>Ubezpieczenie mienia do 200 000 zł</li></ul>
+        <a href="#zamow" class="btn btn-accent" data-plan="Kompleksowy">Wybieram</a>
+      </div>
+      <div class="plan">
+        <h3>Standardowy</h3><div class="sub">Bez streczowania i montażu</div>
+        <div class="price"><b>219</b><span>zł / godz.</span></div>
+        <div class="team">Ekipa 2-osobowa</div>
+        <ul><li>Transport</li><li>Wyniesienie i wniesienie</li><li>Bez ukrytych kosztów</li><li class="no">Zabezpieczenie folią</li><li class="no">Pakowanie i montaż</li></ul>
+        <a href="#zamow" class="btn btn-ghost" data-plan="Standardowy">Wybieram</a>
+      </div>
+    </div>
+
+    <div class="price-extra">
+      <div class="box">
+        <h3>Dodatkowe informacje</h3>
+        <ul>
+          <li>Ceny netto — przy płatności gotówką nie doliczamy VAT.</li>
+          <li>Faktura VAT dla firm na życzenie (+23% VAT).</li>
+          <li>Kartony 5-warstwowe (60×40×40 / 45×30×30 cm) — <b>9,99 zł / szt.</b></li>
+          <li>Wynajem kartonów do 7 dni — <b>gratis</b> w cenie przeprowadzki.</li>
+          <li>Wynajem powyżej 7 dni — 20 zł za 20 szt. za każdy kolejny tydzień.</li>
+          <li>Stawki nie dotyczą przedmiotów powyżej 80 kg (wycena indywidualna).</li>
+        </ul>
+      </div>
+      <div class="box calc">
+        <h3>Szybki kalkulator</h3>
+        <div class="field"><label for="c-plan">Pakiet</label>
+          <select id="c-plan"><option value="189">Ekonomiczny — 189 zł/h</option><option value="219">Standardowy — 219 zł/h</option><option value="239" selected>Kompleksowy — 239 zł/h</option></select></div>
+        <div class="field"><label for="c-h">Czas pracy: <span class="range-val" id="c-hv">3 godz.</span></label>
+          <input id="c-h" type="range" min="1" max="10" value="3"></div>
+        <div class="field"><label for="c-box">Kartony do kupienia: <span class="range-val" id="c-bv">0 szt.</span></label>
+          <input id="c-box" type="range" min="0" max="60" step="5" value="0"></div>
+        <div class="out"><div><small>Szacunkowy koszt (netto)</small>Orientacyjnie</div><b id="c-out">717 zł</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEES -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Dlaczego my</span><h2>Gwarancje, które daje niewiele firm</h2></div>
+    </div>
+    <div class="guar">
+      <div class="g"><span class="num">01</span><h3>Stała cena</h3><p>Kwota ustalona na podstawie listy rzeczy jest ostateczna. Zero dopłat na miejscu.</p></div>
+      <div class="g"><span class="num">02</span><h3>Płatność po realizacji</h3><p>Nie pobieramy zaliczek. Rozliczasz się dopiero, gdy wszystko stoi na miejscu.</p></div>
+      <div class="g"><span class="num">03</span><h3>OCP do 200 000 zł</h3><p>Twoje meble i sprzęt są ubezpieczone przez cały czas przeprowadzki.</p></div>
+      <div class="g"><span class="num">04</span><h3>Od A do Z</h3><p>Kartony, folia, narzędzia, montaż — nie musisz niczego organizować.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section id="jak">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Jak działamy</span><h2>4 kroki do spokojnej przeprowadzki</h2></div>
+      <p class="lead">Wystarczy formularz online albo zdjęcia na WhatsApp — resztą zajmiemy się my.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>Zamówienie</h3><p>Wypełnij formularz online, zadzwoń lub wyślij zdjęcia mebli na WhatsApp.</p></div>
+      <div class="step"><h3>Stała wycena</h3><p>Oddzwaniamy, ustalamy szczegóły i podajemy ostateczną cenę.</p></div>
+      <div class="step"><h3>Realizacja</h3><p>Przyjeżdżamy punktualnie z planem, sprzętem i materiałami.</p></div>
+      <div class="step"><h3>Gotowe</h3><p>Rzeczy bezpiecznie na miejscu. Płacisz dopiero teraz.</p></div>
+    </div>
+    <div class="process">
+      <div class="pr"><h3>Demontaż i zabezpieczenie</h3><p>Rozkręcamy meble i owijamy folią ochronną — bez rys i zabrudzeń.</p></div>
+      <div class="pr"><h3>Sprzęt RTV i AGD</h3><p>Brak fabrycznych pudełek? Pakujemy w folię bąbelkową i koce transportowe.</p></div>
+      <div class="pr"><h3>Delikatne przedmioty</h3><p>Szkło i porcelanę zawijamy w papier i pakujemy do kartonów.</p></div>
+      <div class="pr"><h3>Ubrania</h3><p>Specjalne kartony na odzież — ubrania dojadą bez zagnieceń.</p></div>
+      <div class="pr"><h3>Transport</h3><p>Pasy, wózki platformowe i auta dopasowane do ilości rzeczy.</p></div>
+      <div class="pr"><h3>Rozmieszczenie</h3><p>Wnosimy, składamy i ustawiamy meble tam, gdzie chcesz.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER -->
+<section id="zamow">
+  <div class="wrap order-grid">
+    <div class="order-aside" id="kontakt">
+      <span class="eyebrow">Zamówienie online</span>
+      <h2>Zamów w 2 minuty</h2>
+      <p class="lead">Wypełnij krótki formularz — potwierdzimy termin i podamy stałą cenę. Wolisz porozmawiać? Jesteśmy pod telefonem.</p>
+      <div class="contact-list">
+        <a class="cl" data-tel-link href="#"><span class="ic" style="background:var(--accent)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><div><small>Zadzwoń</small><span data-tel>+48 000 000 000</span></div></a>
+        <a class="cl" data-wa-link href="#" target="_blank" rel="noopener"><span class="ic" style="background:#25D366"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></svg></span><div><small>Wyślij zdjęcia na WhatsApp</small>Wycena ze zdjęć</div></a>
+        <a class="cl" data-mail-link href="#"><span class="ic" style="background:var(--ink)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></span><div><small>E-mail</small><span data-mail>kontakt@twojadomena.pl</span></div></a>
+      </div>
+    </div>
+
+    <form class="form-card" id="orderForm" novalidate>
+      <div class="stepper"><div class="on"></div><div></div><div></div></div>
+
+      <div class="fstep on" data-step="1">
+        <h3>1. Co przewozimy?</h3><p class="hint">Wybierz usługę i pakiet.</p>
+        <div class="choices" id="svcChoices">
+          <label class="choice"><input type="radio" name="usluga" value="Przeprowadzka mieszkania" checked><span>Mieszkanie / dom</span></label>
+          <label class="choice"><input type="radio" name="usluga" value="Przeprowadzka biura"><span>Biuro</span></label>
+          <label class="choice"><input type="radio" name="usluga" value="Przeprowadzka międzymiastowa"><span>Międzymiastowa</span></label>
+          <label class="choice"><input type="radio" name="usluga" value="Transport mebli"><span>Transport mebli</span></label>
+          <label class="choice"><input type="radio" name="usluga" value="Transport pianina"><span>Pianino</span></label>
+          <label class="choice"><input type="radio" name="usluga" value="Taxi bagażowe"><span>Taxi bagażowe</span></label>
+        </div>
+        <div class="choices" id="planChoices">
+          <label class="choice"><input type="radio" name="pakiet" value="Ekonomiczny"><span>Ekonomiczny<small>189 zł/h · 1 osoba</small></span></label>
+          <label class="choice"><input type="radio" name="pakiet" value="Standardowy"><span>Standardowy<small>219 zł/h · 2 osoby</small></span></label>
+          <label class="choice"><input type="radio" name="pakiet" value="Kompleksowy" checked><span>Kompleksowy<small>239 zł/h · 2 osoby</small></span></label>
+        </div>
+        <label class="field" style="margin-bottom:8px"><span style="font-size:13px;font-weight:700;color:var(--ink-2)">Dodatkowo potrzebuję</span></label>
+        <div class="checks">
+          <label class="check"><input type="checkbox" name="extra" value="Pakowanie rzeczy">Pakowanie rzeczy</label>
+          <label class="check"><input type="checkbox" name="extra" value="Demontaż / montaż mebli">Demontaż / montaż</label>
+          <label class="check"><input type="checkbox" name="extra" value="Kartony">Kartony</label>
+          <label class="check"><input type="checkbox" name="extra" value="Faktura VAT">Faktura VAT</label>
+        </div>
+      </div>
+
+      <div class="fstep" data-step="2">
+        <h3>2. Skąd, dokąd i kiedy?</h3><p class="hint">Piętro i winda pomagają nam dokładnie wycenić.</p>
+        <div class="field"><label for="o-from">Adres załadunku *</label><input id="o-from" name="skad" placeholder="ul. Marszałkowska 1, Warszawa" required></div>
+        <div class="row2">
+          <div class="field"><label for="o-ff">Piętro</label><input id="o-ff" name="pietro_skad" type="number" min="0" max="40" placeholder="0"></div>
+          <div class="field"><label for="o-fl">Winda</label><select id="o-fl" name="winda_skad"><option>Jest winda</option><option>Brak windy</option><option>Dom / parter</option></select></div>
+        </div>
+        <div class="field"><label for="o-to">Adres rozładunku *</label><input id="o-to" name="dokad" placeholder="ul. Puławska 10, Piaseczno" required></div>
+        <div class="row2">
+          <div class="field"><label for="o-tf">Piętro</label><input id="o-tf" name="pietro_dokad" type="number" min="0" max="40" placeholder="0"></div>
+          <div class="field"><label for="o-tl">Winda</label><select id="o-tl" name="winda_dokad"><option>Jest winda</option><option>Brak windy</option><option>Dom / parter</option></select></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label for="o-date">Data *</label><input id="o-date" name="data" type="date" required></div>
+          <div class="field"><label for="o-time">Godzina</label><select id="o-time" name="godzina"><option>Rano (8–11)</option><option>Południe (11–14)</option><option>Popołudnie (14–19)</option><option>Elastycznie</option></select></div>
+        </div>
+      </div>
+
+      <div class="fstep" data-step="3">
+        <h3>3. Dane kontaktowe</h3><p class="hint">Oddzwonimy, aby potwierdzić termin i stałą cenę.</p>
+        <div class="row2">
+          <div class="field"><label for="o-name">Imię *</label><input id="o-name" name="imie" required autocomplete="name"></div>
+          <div class="field"><label for="o-phone">Telefon *</label><input id="o-phone" name="telefon" type="tel" required autocomplete="tel" placeholder="+48"></div>
+        </div>
+        <div class="field"><label for="o-mail">E-mail</label><input id="o-mail" name="email" type="email" autocomplete="email"></div>
+        <div class="field"><label for="o-note">Co przewozimy? (lista rzeczy, uwagi)</label><textarea id="o-note" name="uwagi" placeholder="np. sofa narożna, szafa 2 m, łóżko 160, pralka, ok. 20 kartonów"></textarea></div>
+        <label class="check" style="background:none;padding:0;font-weight:500;font-size:14px"><input type="checkbox" id="o-rodo" required>Zgadzam się na kontakt w sprawie wyceny i przetwarzanie danych w tym celu.</label>
+      </div>
+
+      <div class="fstep" data-step="done">
+        <div class="success">
+          <div class="big"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></div>
+          <h3>Dziękujemy! Zamówienie przyjęte</h3>
+          <p class="hint" style="margin-top:8px">Oddzwonimy wkrótce, aby potwierdzić termin i cenę.</p>
+          <div class="summary" id="summary"></div>
+          <a class="btn btn-accent" id="sendWa" target="_blank" rel="noopener" href="#">Wyślij też na WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="err" id="err"></div>
+      <div class="fnav" id="fnav">
+        <button type="button" class="btn btn-ghost" id="prev" style="visibility:hidden">← Wstecz</button>
+        <button type="button" class="btn btn-accent" id="next">Dalej →</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap faq-grid">
+    <div><span class="eyebrow">FAQ</span><h2 style="margin-top:12px">Najczęstsze pytania</h2><p class="lead" style="margin-top:18px">Nie ma tu Twojego pytania? Zadzwoń — odpowiemy od ręki.</p></div>
+    <div>
+      <details open><summary>Czy cena może się zmienić po rozpoczęciu przeprowadzki?</summary><p>Nie. Przed startem ustalamy zakres usługi i listę rzeczy. Na tej podstawie podajemy ostateczną cenę — po zakończeniu nie ma żadnych dopłat.</p></details>
+      <details><summary>Od czego zależy cena?</summary><p>Od ilości rzeczy, piętra i dostępności windy, odległości oraz zakresu usługi (pakowanie, montaż). Wycena jest zawsze bezpłatna.</p></details>
+      <details><summary>Czy moje rzeczy są ubezpieczone?</summary><p>Tak. Każda przeprowadzka jest objęta ubezpieczeniem OCP do 200 000 zł, a meble i sprzęt zabezpieczamy profesjonalnymi materiałami.</p></details>
+      <details><summary>Czy trzeba płacić zaliczkę?</summary><p>Nie. Płatność następuje dopiero po wykonaniu usługi — gotówką, przelewem lub BLIK.</p></details>
+      <details><summary>Czy oferujecie kompleksową obsługę?</summary><p>Tak — od pakowania, demontażu i załadunku, przez transport, po wniesienie, montaż i ustawienie mebli.</p></details>
+      <details><summary>Jak szybko możecie przyjechać?</summary><p>Przy wolnym terminie nawet tego samego dnia. Większe przeprowadzki najlepiej zamówić z kilkudniowym wyprzedzeniem.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="wrap" style="margin-top:96px">
+  <div class="band">
+    <h2>Przeprowadzka za kilka dni? Zarezerwuj termin teraz.</h2>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="#zamow" class="btn btn-dark">Zamów online</a>
+      <a data-tel-link href="#" class="btn btn-ghost">Zadzwoń</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="logo"><span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg></span><span data-brand>MOVEO</span></div>
+        <p style="margin:0;max-width:280px;font-size:15px">Przeprowadzki i transport w Warszawie i okolicach. Stała cena, ubezpieczenie, płatność po realizacji.</p>
+      </div>
+      <div><h4>Usługi</h4><ul><li><a href="#uslugi">Przeprowadzki prywatne</a></li><li><a href="#uslugi">Przeprowadzki biur</a></li><li><a href="#uslugi">Międzymiastowe</a></li><li><a href="#uslugi">Transport mebli i pianin</a></li></ul></div>
+      <div><h4>Firma</h4><ul><li><a href="#cennik">Cennik</a></li><li><a href="#jak">Jak działamy</a></li><li><a href="#faq">FAQ</a></li><li><a href="#zamow">Zamów online</a></li></ul></div>
+      <div><h4>Kontakt</h4><ul><li><a data-tel-link href="#"><span data-tel>+48 000 000 000</span></a></li><li><a data-mail-link href="#"><span data-mail>kontakt@twojadomena.pl</span></a></li><li>Pon–Sob, 8:00–19:00</li><li>Warszawa i okolice</li></ul></div>
+    </div>
+    <div class="copy"><span>© <span id="year"></span> <span data-brand>MOVEO</span>. Wszelkie prawa zastrzeżone.</span><span>Polityka prywatności</span></div>
+  </div>
+</footer>
+
+<div class="fab">
+  <a class="wa" data-wa-link href="#" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></svg></a>
+  <a class="tel" data-tel-link href="#" aria-label="Zadzwoń"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></a>
+</div>
+
+<script>
+/* ===== KONFIGURACJA — podmień dane klienta ===== */
+const CONFIG = {
+  brand: "MOVEO",
+  phone: "+48 000 000 000",        // wyświetlany numer
+  whatsapp: "48000000000",          // numer WhatsApp bez "+" i spacji
+  email: "kontakt@twojadomena.pl",
+  formEndpoint: ""                  // np. https://formspree.io/f/xxxx — jeśli puste, zamówienie idzie na WhatsApp
+};
+
+document.querySelectorAll("[data-brand]").forEach(e => e.textContent = CONFIG.brand);
+document.querySelectorAll("[data-tel]").forEach(e => e.textContent = CONFIG.phone);
+document.querySelectorAll("[data-mail]").forEach(e => e.textContent = CONFIG.email);
+document.querySelectorAll("[data-tel-link]").forEach(e => e.href = "tel:" + CONFIG.phone.replace(/\s/g, ""));
+document.querySelectorAll("[data-mail-link]").forEach(e => e.href = "mailto:" + CONFIG.email);
+const waUrl = t => "https://wa.me/" + CONFIG.whatsapp + (t ? "?text=" + encodeURIComponent(t) : "");
+document.querySelectorAll("[data-wa-link]").forEach(e => e.href = waUrl("Dzień dobry, chcę wycenić przeprowadzkę."));
+document.getElementById("year").textContent = new Date().getFullYear();
+
+addEventListener("scroll", () => document.querySelector("header").classList.toggle("scrolled", scrollY > 10), {passive:true});
+
+async function sendLead(data){
+  if (!CONFIG.formEndpoint) return;
+  try { await fetch(CONFIG.formEndpoint, {method:"POST", headers:{"Content-Type":"application/json","Accept":"application/json"}, body:JSON.stringify(data)}); } catch(e){}
+}
+
+/* counter */
+const counter = document.querySelector("[data-count]");
+new IntersectionObserver((en, ob) => {
+  if (!en[0].isIntersecting) return; ob.disconnect();
+  const end = +counter.dataset.count, t0 = performance.now();
+  const tick = t => { const p = Math.min(1, (t - t0) / 1400); counter.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))).toLocaleString("pl-PL") + (p === 1 ? "+" : ""); if (p < 1) requestAnimationFrame(tick); };
+  requestAnimationFrame(tick);
+}).observe(counter);
+
+/* calculator */
+const cPlan = document.getElementById("c-plan"), cH = document.getElementById("c-h"), cB = document.getElementById("c-box");
+function calc(){
+  const h = +cH.value, b = +cB.value;
+  document.getElementById("c-hv").textContent = h + " godz.";
+  document.getElementById("c-bv").textContent = b + " szt.";
+  const total = +cPlan.value * h + b * 9.99;
+  document.getElementById("c-out").textContent = Math.round(total).toLocaleString("pl-PL") + " zł";
+}
+[cPlan, cH, cB].forEach(e => e.addEventListener("input", calc)); calc();
+
+/* preselect from cards */
+document.querySelectorAll("[data-plan]").forEach(a => a.addEventListener("click", () => {
+  const r = document.querySelector(`input[name=pakiet][value="${a.dataset.plan}"]`); if (r) r.checked = true;
+}));
+document.querySelectorAll("[data-svc]").forEach(a => a.addEventListener("click", () => {
+  const r = document.querySelector(`input[name=usluga][value="${a.dataset.svc}"]`); if (r) r.checked = true;
+}));
+
+/* quick form */
+document.getElementById("quickForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const f = e.target, phone = f.phone.value.trim();
+  if (phone.replace(/\D/g, "").length < 9) { f.phone.focus(); f.phone.style.borderColor = "#FF6A1A"; return; }
+  const msg = `Prośba o oddzwonienie\nImię: ${f.name.value || "-"}\nTelefon: ${phone}\nUsługa: ${f.service.value}`;
+  sendLead({typ:"oddzwonienie", imie:f.name.value, telefon:phone, usluga:f.service.value});
+  f.innerHTML = `<h3>Dziękujemy!</h3><p>Oddzwonimy na numer <b style="color:#fff">${phone.replace(/</g,"")}</b> w ciągu kilku minut.</p>` +
+    (CONFIG.formEndpoint ? "" : `<a class="btn btn-accent" target="_blank" rel="noopener" href="${waUrl(msg)}">Potwierdź na WhatsApp</a>`);
+});
+
+/* order multistep */
+const form = document.getElementById("orderForm");
+const steps = [...form.querySelectorAll(".fstep")];
+const bars = [...form.querySelectorAll(".stepper div")];
+const prev = document.getElementById("prev"), next = document.getElementById("next"), err = document.getElementById("err");
+let cur = 0;
+document.getElementById("o-date").min = new Date().toISOString().slice(0, 10);
+
+function show(i){
+  steps.forEach((s, k) => s.classList.toggle("on", k === i));
+  bars.forEach((b, k) => b.classList.toggle("on", k <= i));
+  prev.style.visibility = i > 0 && i < 3 ? "visible" : "hidden";
+  next.textContent = i === 2 ? "Wyślij zamówienie" : "Dalej →";
+  document.getElementById("fnav").style.display = i === 3 ? "none" : "flex";
+  err.textContent = ""; cur = i;
+}
+function valid(i){
+  const bad = [...steps[i].querySelectorAll("[required]")].find(el => el.type === "checkbox" ? !el.checked : !el.value.trim());
+  if (bad) { err.textContent = bad.type === "checkbox" ? "Zaznacz zgodę, aby wysłać zamówienie." : "Uzupełnij wymagane pola (*)."; bad.focus(); return false; }
+  if (i === 2 && form.telefon.value.replace(/\D/g, "").length < 9) { err.textContent = "Podaj poprawny numer telefonu."; form.telefon.focus(); return false; }
+  return true;
+}
+prev.onclick = () => show(cur - 1);
+next.onclick = () => {
+  if (!valid(cur)) return;
+  if (cur < 2) return show(cur + 1);
+  const fd = new FormData(form);
+  const d = Object.fromEntries(fd); d.extra = fd.getAll("extra").join(", ") || "-";
+  const txt =
+`NOWE ZAMÓWIENIE
+Usługa: ${d.usluga} (pakiet ${d.pakiet})
+Dodatkowo: ${d.extra}
+Skąd: ${d.skad}, piętro ${d.pietro_skad || 0}, ${d.winda_skad}
+Dokąd: ${d.dokad}, piętro ${d.pietro_dokad || 0}, ${d.winda_dokad}
+Termin: ${d.data}, ${d.godzina}
+Klient: ${d.imie}, ${d.telefon}${d.email ? ", " + d.email : ""}
+Uwagi: ${d.uwagi || "-"}`;
+  sendLead(d);
+  document.getElementById("summary").textContent = txt;
+  const wa = document.getElementById("sendWa");
+  wa.href = waUrl(txt);
+  wa.style.display = CONFIG.formEndpoint ? "none" : "inline-flex";
+  show(3);
+  form.scrollIntoView({behavior:"smooth", block:"start"});
+};
+</script>
+</body>
+</html>
