@@ -17,8 +17,8 @@ SITE = D(
     hours="Pon–Sob, 8:00–19:00",
     map_query="Warszawa",
     google_reviews="",                 # link do opinii Google (Zostaw opinię)
-    url="https://newhope77.github.io/przeprowadzki-site/",
-    base="/przeprowadzki-site/",       # "/" po podpięciu własnej domeny
+    url="https://znosimy.com.pl/",
+    base="/",
     form_endpoint="",                  # np. https://formspree.io/f/xxxx — puste = WhatsApp
 )
 
