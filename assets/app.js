@@ -59,6 +59,7 @@
     if (!phoneOk(phone)) { f.phone.classList.add("invalid"); f.phone.focus(); return; }
     const msg = `Prośba o oddzwonienie\nImię: ${f.name.value || "-"}\nTelefon: ${phone}\nUsługa: ${f.service.value}\nStrona: ${document.title}`;
     sendLead({ typ: "oddzwonienie", imie: f.name.value, telefon: phone, usluga: f.service.value, strona: location.href });
+    f.classList.add("done");
     f.innerHTML = `<h3>Dziękujemy!</h3><p>Oddzwonimy na numer <b style="color:#fff">${escapeHtml(phone)}</b> w ciągu kilku minut.</p>` +
       (SITE.formEndpoint ? "" : `<a class="btn btn-accent" target="_blank" rel="noopener" href="${waUrl(msg)}">Potwierdź na WhatsApp</a>`);
   }));

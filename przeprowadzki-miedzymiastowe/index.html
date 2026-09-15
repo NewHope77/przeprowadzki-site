@@ -44,7 +44,7 @@
   <a href="tel:+48000000000" class="btn btn-ghost">Zadzwoń: +48 000 000 000</a>
 </div>
 <main id="main">
-<section class="hero sub">
+<section class="hero sub has-art">
   <div class="hero-blob"></div>
   <div class="wrap hero-grid">
     <div>
@@ -59,17 +59,36 @@
       </div>
       <p class="trust"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Płatność dopiero po realizacji — bez zaliczek</p>
     </div>
-    
-<form class="quick js-quick">
-  <h3>Darmowa wycena</h3>
-  <p>Oddzwonimy w ciągu kilku minut.</p>
-  <div class="field"><label>Imię<input name="name" placeholder="Jan" autocomplete="given-name"></label></div>
-  <div class="field"><label>Telefon *<input name="phone" type="tel" placeholder="+48 ___ ___ ___" required autocomplete="tel"></label></div>
-  <div class="field"><label>Czego potrzebujesz?<select name="service"><option>Przeprowadzka mieszkania</option><option>Przeprowadzka biura</option><option selected>Przeprowadzka międzymiastowa</option><option>Taxi bagażowe</option><option>Transport mebli</option><option>Transport pianina</option></select></label></div>
-  <button class="btn btn-accent" type="submit">Oddzwońcie do mnie</button>
-  <div class="note">Bez zobowiązań · Wycena bezpłatna</div>
-</form>
+    <div class="hero-art"><svg viewBox="0 0 480 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mapa z trasą i auto dostawcze">
+<circle cx="245" cy="200" r="178" fill="#FFE9D9"/>
+<circle cx="430" cy="58" r="9" fill="#FFB400" class="float"/>
+<path d="M52 70l6 14 14 6-14 6-6 14-6-14-14-6 14-6z" fill="#FF6A1A" class="float d2"/>
+<ellipse cx="240" cy="354" rx="215" ry="13" fill="#0E1B2C" opacity=".08"/>
+<g stroke="#0E1B2C" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+<rect x="56" y="48" width="368" height="252" rx="24" fill="#fff"/>
+<path d="M58 136c92-20 162 40 364 10" fill="none" stroke="#EEF1F5" stroke-width="14"/>
+<path d="M170 50c10 94-30 164-10 248" fill="none" stroke="#EEF1F5" stroke-width="14"/>
+<path d="M310 50c-10 84 40 164 30 248" fill="none" stroke="#EEF1F5" stroke-width="10"/>
+<circle cx="385" cy="238" r="28" fill="#E3F3EA" stroke="none"/>
+<path d="M122 222c70 4 96-96 208-92" fill="none" stroke="#FF6A1A" stroke-width="6" stroke-dasharray="2 14"/>
+<g transform="translate(122 222)"><path d="M0 0c-16-20-24-32-24-44a24 24 0 0 1 48 0c0 12-8 24-24 44z" fill="#0E1B2C"/><circle cy="-44" r="9" fill="#fff" stroke="none"/></g>
+<g transform="translate(330 130)"><path d="M0 0c-16-20-24-32-24-44a24 24 0 0 1 48 0c0 12-8 24-24 44z" fill="#FF6A1A"/><circle cy="-44" r="9" fill="#fff" stroke="none"/></g>
+<rect x="72" y="232" width="100" height="30" rx="15" fill="#0E1B2C" stroke="none"/>
+<text x="122" y="252" text-anchor="middle" font-size="14" font-weight="700" fill="#fff" stroke="none">Warszawa</text>
+<rect x="286" y="142" width="88" height="30" rx="15" fill="#FF6A1A" stroke="none"/>
+<text x="330" y="162" text-anchor="middle" font-size="14" font-weight="700" fill="#fff" stroke="none">Gdańsk</text>
+<path d="M96 300h40M112 318h30M90 336h44" stroke-width="5"/></g>
+<g transform="translate(150 264)"><path d="M6 20a6 6 0 0 1 6-6h114v58H6z" fill="#fff" stroke="#0E1B2C" stroke-width="3"/><path d="M126 30h34l28 26v16h-62z" fill="#FF6A1A" stroke="#0E1B2C" stroke-width="3" stroke-linejoin="round"/><path d="M140 37h17l17 16h-34z" fill="#DCEBFA"/><path d="M6 60h182" stroke="#0E1B2C" stroke-width="3"/><rect x="20" y="28" width="40" height="18" rx="3" fill="#FF6A1A"/><rect x="66" y="28" width="46" height="18" rx="3" fill="#FFB400"/><circle cx="44" cy="74" r="11" fill="#0E1B2C"/><circle cx="44" cy="74" r="4" fill="#fff"/><circle cx="160" cy="74" r="11" fill="#0E1B2C"/><circle cx="160" cy="74" r="4" fill="#fff"/></g>
+</svg></div>
   </div>
+  <div class="wrap">
+<form class="qband js-quick">
+  <div class="qb-text"><h3>Darmowa wycena</h3><p>Oddzwonimy w ciągu kilku minut.</p></div>
+  <label class="qb-f"><span>Imię</span><input name="name" placeholder="Jan" autocomplete="given-name"></label>
+  <label class="qb-f"><span>Telefon *</span><input name="phone" type="tel" placeholder="+48 ___ ___ ___" required autocomplete="tel"></label>
+  <label class="qb-f"><span>Usługa</span><select name="service"><option>Przeprowadzka mieszkania</option><option>Przeprowadzka biura</option><option selected>Przeprowadzka międzymiastowa</option><option>Taxi bagażowe</option><option>Transport mebli</option><option>Transport pianina</option></select></label>
+  <button class="btn btn-accent" type="submit">Oddzwońcie do mnie</button>
+</form></div>
 </section>
 <section class="alt">
   <div class="wrap split">

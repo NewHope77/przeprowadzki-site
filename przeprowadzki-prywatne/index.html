@@ -44,7 +44,7 @@
   <a href="tel:+48000000000" class="btn btn-ghost">Zadzwoń: +48 000 000 000</a>
 </div>
 <main id="main">
-<section class="hero sub">
+<section class="hero sub has-art">
   <div class="hero-blob"></div>
   <div class="wrap hero-grid">
     <div>
@@ -59,17 +59,32 @@
       </div>
       <p class="trust"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Płatność dopiero po realizacji — bez zaliczek</p>
     </div>
-    
-<form class="quick js-quick">
-  <h3>Darmowa wycena</h3>
-  <p>Oddzwonimy w ciągu kilku minut.</p>
-  <div class="field"><label>Imię<input name="name" placeholder="Jan" autocomplete="given-name"></label></div>
-  <div class="field"><label>Telefon *<input name="phone" type="tel" placeholder="+48 ___ ___ ___" required autocomplete="tel"></label></div>
-  <div class="field"><label>Czego potrzebujesz?<select name="service"><option selected>Przeprowadzka mieszkania</option><option>Przeprowadzka biura</option><option>Przeprowadzka międzymiastowa</option><option>Taxi bagażowe</option><option>Transport mebli</option><option>Transport pianina</option></select></label></div>
-  <button class="btn btn-accent" type="submit">Oddzwońcie do mnie</button>
-  <div class="note">Bez zobowiązań · Wycena bezpłatna</div>
-</form>
+    <div class="hero-art"><svg viewBox="0 0 480 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dom i kartony do przeprowadzki">
+<circle cx="245" cy="200" r="178" fill="#FFE9D9"/>
+<circle cx="430" cy="58" r="9" fill="#FFB400" class="float"/>
+<path d="M52 70l6 14 14 6-14 6-6 14-6-14-14-6 14-6z" fill="#FF6A1A" class="float d2"/>
+<ellipse cx="240" cy="354" rx="215" ry="13" fill="#0E1B2C" opacity=".08"/>
+<g stroke="#0E1B2C" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+<rect x="272" y="96" width="28" height="60" fill="#0E1B2C"/>
+<rect x="126" y="168" width="196" height="182" fill="#fff"/>
+<path d="M104 178L224 84l120 94z" fill="#FF6A1A"/>
+<circle cx="224" cy="142" r="14" fill="#FFB400"/>
+<rect x="146" y="196" width="50" height="46" rx="4" fill="#DCEBFA"/><path d="M171 196v46M146 219h50" stroke-width="3"/>
+<rect x="252" y="196" width="50" height="46" rx="4" fill="#DCEBFA"/><path d="M277 196v46M252 219h50" stroke-width="3"/>
+<rect x="198" y="266" width="52" height="84" rx="4" fill="#1E3350"/><circle cx="240" cy="310" r="4" fill="#FFB400" stroke="none"/>
+<rect x="334" y="284" width="86" height="66" rx="4" fill="#F2B872"/><rect x="371" y="286" width="12" height="25.08" fill="#E09A4E" stroke="none"/><rect x="346.04" y="320.96" width="27.52" height="14.52" rx="2" fill="#fff" stroke-width="3"/><rect x="348" y="228" width="62" height="56" rx="4" fill="#F2B872"/><rect x="373" y="230" width="12" height="21.28" fill="#E09A4E" stroke="none"/><rect x="356.68" y="259.36" width="19.84" height="12.32" rx="2" fill="#fff" stroke-width="3"/><rect x="424" y="306" width="44" height="44" rx="4" fill="#F2B872"/><rect x="440" y="308" width="12" height="16.72" fill="#E09A4E" stroke="none"/><rect x="430.16" y="330.64" width="14.08" height="9.68" rx="2" fill="#fff" stroke-width="3"/>
+<path d="M58 350h36l6-40H52z" fill="#FF6A1A"/><path d="M76 310c-4-30 6-50 26-58-2 26-10 44-26 58z" fill="#16A36A"/><path d="M74 310c-12-22-30-30-46-28 8 20 24 30 46 28z" fill="#16A36A"/></g>
+
+</svg></div>
   </div>
+  <div class="wrap">
+<form class="qband js-quick">
+  <div class="qb-text"><h3>Darmowa wycena</h3><p>Oddzwonimy w ciągu kilku minut.</p></div>
+  <label class="qb-f"><span>Imię</span><input name="name" placeholder="Jan" autocomplete="given-name"></label>
+  <label class="qb-f"><span>Telefon *</span><input name="phone" type="tel" placeholder="+48 ___ ___ ___" required autocomplete="tel"></label>
+  <label class="qb-f"><span>Usługa</span><select name="service"><option selected>Przeprowadzka mieszkania</option><option>Przeprowadzka biura</option><option>Przeprowadzka międzymiastowa</option><option>Taxi bagażowe</option><option>Transport mebli</option><option>Transport pianina</option></select></label>
+  <button class="btn btn-accent" type="submit">Oddzwońcie do mnie</button>
+</form></div>
 </section>
 <section class="alt">
   <div class="wrap split">

@@ -6,6 +6,7 @@ from datetime import date
 from pathlib import Path
 
 from content import SITE, SERVICES, HOURLY, BOX_NOTES, HOME_FAQ, CASES, REVIEWS, ARTICLES
+from illustrations import ART
 
 ROOT = Path(__file__).resolve().parent.parent
 esc = html.escape
@@ -190,8 +191,19 @@ def quick_form(title="Darmowa wycena", selected="", note="Oddzwonimy w ciągu ki
 </form>'''
 
 
-def hero(R, h1, lead, badge_list, cta_primary, cta_secondary, form, crumb_html="", sub=False):
-    cls = "hero sub" if sub else "hero"
+def quick_band(selected=""):
+    return f'''
+<form class="qband js-quick">
+  <div class="qb-text"><h3>Darmowa wycena</h3><p>Oddzwonimy w ciągu kilku minut.</p></div>
+  <label class="qb-f"><span>Imię</span><input name="name" placeholder="Jan" autocomplete="given-name"></label>
+  <label class="qb-f"><span>Telefon *</span><input name="phone" type="tel" placeholder="+48 ___ ___ ___" required autocomplete="tel"></label>
+  <label class="qb-f"><span>Usługa</span><select name="service">{service_options(selected)}</select></label>
+  <button class="btn btn-accent" type="submit">Oddzwońcie do mnie</button>
+</form>'''
+
+
+def hero(R, h1, lead, badge_list, cta_primary, cta_secondary, form, crumb_html="", sub=False, below=""):
+    cls = ("hero sub" if sub else "hero") + (" has-art" if below else "")
     return f'''
 <section class="{cls}">
   <div class="hero-blob"></div>
@@ -210,6 +222,7 @@ def hero(R, h1, lead, badge_list, cta_primary, cta_secondary, form, crumb_html="
     </div>
     {form}
   </div>
+  <div class="wrap">{below}</div>
 </section>'''
 
 
@@ -510,7 +523,7 @@ def service_page(s):
     def body(R):
         crumb = crumbs(R, [("Usługi", ""), (s.name, "")])
         out = hero(R, s.h1, s.lead, s.badges, ("Zamów online", f"{R}wycena/?usluga={s.form.replace(' ', '%20')}"),
-                   ("Cennik", "#cennik"), quick_form("Darmowa wycena", s.form), crumb, sub=True)
+                   ("Cennik", "#cennik"), f'<div class="hero-art">{ART[s.slug]}</div>', crumb, sub=True, below=quick_band(s.form))
         alt = True
         for b in s.blocks:
             out += split_block(b, alt) if b.type == "split" else chips_block(b, alt)

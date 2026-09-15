@@ -44,7 +44,7 @@
   <a href="tel:+48000000000" class="btn btn-ghost">Zadzwoń: +48 000 000 000</a>
 </div>
 <main id="main">
-<section class="hero sub">
+<section class="hero sub has-art">
   <div class="hero-blob"></div>
   <div class="wrap hero-grid">
     <div>
@@ -59,17 +59,36 @@
       </div>
       <p class="trust"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Płatność dopiero po realizacji — bez zaliczek</p>
     </div>
-    
-<form class="quick js-quick">
-  <h3>Darmowa wycena</h3>
-  <p>Oddzwonimy w ciągu kilku minut.</p>
-  <div class="field"><label>Imię<input name="name" placeholder="Jan" autocomplete="given-name"></label></div>
-  <div class="field"><label>Telefon *<input name="phone" type="tel" placeholder="+48 ___ ___ ___" required autocomplete="tel"></label></div>
-  <div class="field"><label>Czego potrzebujesz?<select name="service"><option>Przeprowadzka mieszkania</option><option>Przeprowadzka biura</option><option>Przeprowadzka międzymiastowa</option><option>Taxi bagażowe</option><option selected>Transport mebli</option><option>Transport pianina</option></select></label></div>
-  <button class="btn btn-accent" type="submit">Oddzwońcie do mnie</button>
-  <div class="note">Bez zobowiązań · Wycena bezpłatna</div>
-</form>
+    <div class="hero-art"><svg viewBox="0 0 480 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sofa zabezpieczona folią i kartony">
+<circle cx="245" cy="200" r="178" fill="#FFE9D9"/>
+<circle cx="430" cy="58" r="9" fill="#FFB400" class="float"/>
+<path d="M52 70l6 14 14 6-14 6-6 14-6-14-14-6 14-6z" fill="#FF6A1A" class="float d2"/>
+<ellipse cx="240" cy="354" rx="215" ry="13" fill="#0E1B2C" opacity=".08"/>
+<g stroke="#0E1B2C" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+<path d="M38 350v-190" stroke-width="5"/><path d="M22 350h32"/>
+<path d="M14 158h48l-10-44H24z" fill="#FFB400"/>
+<rect x="92" y="190" width="256" height="96" rx="20" fill="#FF6A1A"/>
+<path d="M220 204v70" stroke="#C9500F"/>
+<rect x="88" y="262" width="264" height="60" rx="14" fill="#FF8A4C"/>
+<path d="M220 268v48" stroke="#C9500F"/>
+<rect x="62" y="232" width="52" height="98" rx="18" fill="#FF6A1A"/>
+<rect x="326" y="232" width="52" height="98" rx="18" fill="#FF6A1A"/>
+<rect x="84" y="330" width="14" height="20" rx="3" fill="#0E1B2C"/><rect x="342" y="330" width="14" height="20" rx="3" fill="#0E1B2C"/>
+<rect x="128" y="218" width="62" height="46" rx="14" fill="#FFB400" transform="rotate(-8 159 241)"/>
+<path d="M236 184h112q36 4 34 50v102H236z" fill="#DCEBFA" fill-opacity=".55" stroke="#9FC3E8" stroke-width="3"/>
+<path d="M250 216l124-18M246 262l136-22M246 308l136-22" stroke="#fff" stroke-width="5" opacity=".85"/>
+<rect x="392" y="282" width="76" height="68" rx="4" fill="#F2B872"/><rect x="424" y="284" width="12" height="25.84" fill="#E09A4E" stroke="none"/><rect x="402.64" y="320.08" width="24.32" height="14.96" rx="2" fill="#fff" stroke-width="3"/><rect x="402" y="228" width="56" height="54" rx="4" fill="#F2B872"/><rect x="424" y="230" width="12" height="20.52" fill="#E09A4E" stroke="none"/><rect x="409.84" y="258.24" width="17.92" height="11.88" rx="2" fill="#fff" stroke-width="3"/></g>
+
+</svg></div>
   </div>
+  <div class="wrap">
+<form class="qband js-quick">
+  <div class="qb-text"><h3>Darmowa wycena</h3><p>Oddzwonimy w ciągu kilku minut.</p></div>
+  <label class="qb-f"><span>Imię</span><input name="name" placeholder="Jan" autocomplete="given-name"></label>
+  <label class="qb-f"><span>Telefon *</span><input name="phone" type="tel" placeholder="+48 ___ ___ ___" required autocomplete="tel"></label>
+  <label class="qb-f"><span>Usługa</span><select name="service"><option>Przeprowadzka mieszkania</option><option>Przeprowadzka biura</option><option>Przeprowadzka międzymiastowa</option><option>Taxi bagażowe</option><option selected>Transport mebli</option><option>Transport pianina</option></select></label>
+  <button class="btn btn-accent" type="submit">Oddzwońcie do mnie</button>
+</form></div>
 </section>
 <section class="alt">
   <div class="wrap split">
