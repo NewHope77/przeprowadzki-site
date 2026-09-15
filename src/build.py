@@ -139,7 +139,7 @@ def footer(R):
         <li><a href="{R}porady/">Porady</a></li><li><a href="{R}opinie/">Opinie</a></li><li><a href="{R}wycena/">Wycena online</a></li>
       </ul></div>
       <div><h4>Kontakt</h4><ul>
-        <li><a href="{TEL}">{SITE.phone}</a></li><li><a href="mailto:{SITE.email}">{SITE.email}</a></li>
+        <li><a href="{TEL}">{SITE.phone}</a></li><li><a href="mailto:{SITE.email}">{SITE.email}</a></li><li><a href="mailto:{SITE.email_quote}">{SITE.email_quote}</a></li>
         <li>{SITE.hours}</li><li>{SITE.address}</li>
       </ul></div>
     </div>
@@ -288,7 +288,7 @@ def calculator():
   <div class="field"><label for="c-plan">Pakiet</label><select id="c-plan">{opts}</select></div>
   <div class="field"><label for="c-h">Czas pracy: <span class="range-val" id="c-hv">3 godz.</span></label><input id="c-h" type="range" min="1" max="10" value="3"></div>
   <div class="field"><label for="c-box">Kartony do kupienia: <span class="range-val" id="c-bv">0 szt.</span></label><input id="c-box" type="range" min="0" max="60" step="5" value="0"></div>
-  <div class="out"><div><small>Szacunkowy koszt (netto)</small>Orientacyjnie</div><b id="c-out">717 zł</b></div>
+  <div class="out"><div><small>Szacunkowy koszt (netto)</small>Orientacyjnie</div><b id="c-out">720 zł</b></div>
 </div>'''
 
 
@@ -376,18 +376,19 @@ def post_cards(R, items):
 </a>''' for a in items) + '</div>'
 
 
-def contact_list(R):
+def contact_list(R, email=None):
+    email = email or SITE.email
     return f'''
 <div class="contact-list">
   <a class="cl" href="{TEL}"><span class="ic accent">{svg("phone")}</span><div><small>Zadzwoń · {SITE.hours}</small>{SITE.phone}</div></a>
   <a class="cl" href="{WA_LINK}" data-wa="Dzień dobry, chcę wycenić przeprowadzkę." target="_blank" rel="noopener"><span class="ic wa-bg">{WA}</span><div><small>Wyślij zdjęcia na WhatsApp</small>Wycena ze zdjęć</div></a>
-  <a class="cl" href="mailto:{SITE.email}"><span class="ic ink">{svg("mail")}</span><div><small>E-mail</small>{SITE.email}</div></a>
+  <a class="cl" href="mailto:{email}"><span class="ic ink">{svg("mail")}</span><div><small>E-mail</small>{email}</div></a>
 </div>'''
 
 
 def order_form():
     svc = "".join(f'<label class="choice"><input type="radio" name="usluga" value="{s.form}"{" checked" if i == 0 else ""}><span>{s.name}</span></label>' for i, s in enumerate(SERVICES))
-    pk = [("Ekonomiczny", "189 zł/h · 1 osoba"), ("Standardowy", "219 zł/h · 2 osoby"), ("Kompleksowy", "239 zł/h · 2 osoby"), ("Nie wiem — doradźcie", "Dobierzemy pakiet")]
+    pk = [("Ekonomiczny", "190 zł/h · 1 osoba"), ("Standardowy", "220 zł/h · 2 osoby"), ("Kompleksowy", "240 zł/h · 2 osoby"), ("Nie wiem — doradźcie", "Dobierzemy pakiet")]
     pkh = "".join(f'<label class="choice"><input type="radio" name="pakiet" value="{v}"{" checked" if v == "Kompleksowy" else ""}><span>{v}<small>{d}</small></span></label>' for v, d in pk)
     return f'''
 <form class="form-card" id="orderForm" novalidate>
@@ -456,7 +457,7 @@ def order_section(R, title="Zamów w 2 minuty"):
       <span class="eyebrow">Zamówienie online</span>
       <h2>{title}</h2>
       <p class="lead">Wypełnij krótki formularz — potwierdzimy termin i podamy stałą cenę. Wolisz porozmawiać? Jesteśmy pod telefonem.</p>
-      {contact_list(R)}
+      {contact_list(R, SITE.email_quote)}
     </div>
     {order_form()}
   </div>
@@ -485,7 +486,7 @@ def chips_block(b, alt):
 
 BUSINESS = {
     "@context": "https://schema.org", "@type": "MovingCompany", "name": SITE.brand, "telephone": SITE.phone, "email": SITE.email,
-    "url": SITE.url, "areaServed": "Warszawa i okolice", "priceRange": "189–239 zł/h",
+    "url": SITE.url, "areaServed": "Warszawa i okolice", "priceRange": "190–240 zł/h",
     "address": {"@type": "PostalAddress", "addressLocality": SITE.city, "addressCountry": "PL"},
     "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "08:00", "closes": "19:00"}],
 }
@@ -568,7 +569,7 @@ def cennik_page():
 </section>'''
         out += faq_section(HOME_FAQ[:4], alt=len(SERVICES) % 2 == 1)
         return out + cta_band(R, "Chcesz poznać dokładną cenę? Wycenimy w 2 minuty.")
-    page("cennik/", "Cennik przeprowadzek i transportu — Warszawa", "Cennik przeprowadzek w Warszawie: od 189 zł/h, transport międzymiastowy od 1,99 zł/km, pianino od 500 zł. Stała cena i płatność po realizacji.", body, active="cennik")
+    page("cennik/", "Cennik przeprowadzek i transportu — Warszawa", "Cennik przeprowadzek w Warszawie: od 190 zł/h, transport międzymiastowy od 2 zł/km, pianino od 500 zł. Stała cena i płatność po realizacji.", body, active="cennik")
 
 
 def realizacje_page():
@@ -630,7 +631,7 @@ def wycena_page():
     <div class="order-aside">
       <h2>Wolisz inaczej?</h2>
       <p class="lead">Zadzwoń albo wyślij zdjęcia mebli na WhatsApp — wycenimy na ich podstawie.</p>
-      {contact_list(R)}
+      {contact_list(R, SITE.email_quote)}
     </div>
     {order_form()}
   </div>
@@ -651,6 +652,8 @@ def kontakt_page():
       <div class="info-card">
         <div>{svg("clock")}<span><small>Godziny pracy</small>{SITE.hours}</span></div>
         <div>{svg("pin")}<span><small>Obszar działania</small>{SITE.address}, cała Polska</span></div>
+        <div>{svg("mail")}<span><small>Wyceny</small><a href="mailto:{SITE.email_quote}">{SITE.email_quote}</a></span></div>
+        <div>{svg("phone")}<span><small>WhatsApp</small><a href="{WA_LINK}" target="_blank" rel="noopener">{SITE.phone}</a></span></div>
       </div>
       <iframe class="map" src="{maps}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa"></iframe>
     </div>

@@ -46,7 +46,7 @@
       const h = +cH.value, b = +cB.value;
       $("#c-hv").textContent = h + " godz.";
       $("#c-bv").textContent = b + " szt.";
-      $("#c-out").textContent = Math.round(+cPlan.value * h + b * 9.99).toLocaleString("pl-PL") + " zł";
+      $("#c-out").textContent = Math.round(+cPlan.value * h + b * 10).toLocaleString("pl-PL") + " zł";
     };
     [cPlan, cH, cB].forEach(e => e.addEventListener("input", calc));
     calc();
