@@ -400,9 +400,14 @@ footer .logo{color:#fff;margin-bottom:16px}
 .qband .btn{padding:14px 24px;white-space:nowrap}
 .qband.done{display:flex;flex-wrap:wrap;align-items:center;gap:8px 24px}
 .qband.done p{margin:0;color:#A9B4C2}
-@media (max-width:1024px){
+@media (max-width:1024px) and (min-width:861px){
+  .hero.has-art .hero-grid{grid-template-columns:1.1fr .9fr;gap:24px}
+}
+@media (max-width:860px){
   .hero.has-art .hero-grid{grid-template-columns:1fr}
   .hero-art svg{max-width:440px}
+}
+@media (max-width:1024px){
   .qband{grid-template-columns:1fr 1fr}
   .qb-text,.qband .btn{grid-column:1/-1}
 }

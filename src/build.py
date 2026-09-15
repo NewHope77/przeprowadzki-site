@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Generator statycznych stron. Uruchom z katalogu site/: python3 src/build.py"""
+import hashlib
 import html
 import json
 from datetime import date
@@ -10,6 +11,8 @@ from illustrations import ART
 
 ROOT = Path(__file__).resolve().parent.parent
 esc = html.escape
+# wersja plików CSS/JS — przeglądarka pobiera nowe po każdej zmianie
+ASSET_V = hashlib.md5(b"".join((ROOT / "assets" / f).read_bytes() for f in ("style.css", "app.js"))).hexdigest()[:8]
 BUILT = []
 
 ICONS = {
@@ -70,7 +73,7 @@ def head(R, path, title, desc, schema=None):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{R}assets/style.css">
+<link rel="stylesheet" href="{R}assets/style.css?v={ASSET_V}">
 {ld}
 </head>
 <body>'''
@@ -148,7 +151,7 @@ def footer(R):
   <a class="tel" href="{TEL}" aria-label="Zadzwoń">{svg("phone")}</a>
 </div>
 <script>window.SITE={site_js}</script>
-<script src="{R}assets/app.js" defer></script>
+<script src="{R}assets/app.js?v={ASSET_V}" defer></script>
 </body>
 </html>'''
 
