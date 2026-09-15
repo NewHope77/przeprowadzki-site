@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://newhope77.github.io/przeprowadzki-site/sitemap.xml
